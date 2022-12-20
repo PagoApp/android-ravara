@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="pago_size_1">1dp</dimen>
+    <dimen name="pago_size_2">2dp</dimen>
+    <dimen name="pago_size_4">4dp</dimen>
+    <dimen name="pago_size_8">8dp</dimen>
+    <dimen name="pago_size_6">6dp</dimen>
+    <dimen name="pago_size_10">10dp</dimen>
+    <dimen name="pago_size_12">12dp</dimen>
+    <dimen name="pago_size_14">16dp</dimen>
+    <dimen name="pago_size_16">16dp</dimen>
+    <dimen name="pago_size_24">24dp</dimen>
+    <dimen name="pago_size_32">32dp</dimen>
+    <dimen name="pago_size_36">36dp</dimen>
+    <dimen name="pago_size_40">40dp</dimen>
+    <dimen name="pago_size_48">48dp</dimen>
+    <dimen name="pago_size_56">56dp</dimen>
+    <dimen name="pago_size_60">60dp</dimen>
+    <dimen name="pago_size_64">64dp</dimen>
+    <dimen name="pago_size_72">72dp</dimen>
+    <dimen name="pago_size_128">128dp</dimen>
+
+    <dimen name="pago_margin_100">100dp</dimen>
+
+    <dimen name="pago_margin_8">8dp</dimen>
+    <dimen name="pago_margin_10">10dp</dimen>
+    <dimen name="pago_margin_12">12dp</dimen>
+    <dimen name="pago_margin_16">16dp</dimen>
+    <dimen name="pago_margin_22">22dp</dimen>
+    <dimen name="pago_margin_24">24dp</dimen>
+
+    <dimen name="pago_corner_radius_8">8dp</dimen>
+
+    <dimen name="pago_font_size_16">16sp</dimen>
+    <dimen name="pago_font_size_20">20sp</dimen>
+
+    <dimen name="pago_rounded_8">8dp</dimen>
+    <dimen name="pago_rounded_12">12dp</dimen>
+    <dimen name="pago_rounded_24">24dp</dimen>
+
+</resources>

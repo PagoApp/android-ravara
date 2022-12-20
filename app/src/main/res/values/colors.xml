@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="pago_ripple_color">#E6EBF2</color>
+
+    <color name="pago_body_text">#222222</color>
+    <color name="pago_arrow_color">#222222</color>
+    <color name="pago_drawable_color">#222222</color>
+
+    <color name="pago_white">#FFFFFF</color>
+    <color name="pago_green_transparent">#262CC84D</color>
+
+    <color name="pago_primary">#FBC400</color>
+    <color name="pago_yellow_bg">#FEECA9</color>
+    <color name="pago_blue">#2B59C3</color>
+
+    <color name="pago_white_transparent_15">#26ffffff</color>
+    <color name="pago_red">#FF5151</color>
+    <color name="pago_red_warning">#E0132B</color>
+    <color name="pago_blue_transparent">#D8DFF3</color>
+    <color name="pago_divider">#E5E5E5</color>
+    <color name="pago_input_underline">#666666</color>
+    <color name="pago_bg_gray">#FCFCFC</color>
+
+    <color name="pago_yellow">#FCA21B</color>
+    <color name="pago_yellow_dark">#614C00</color>
+    <color name="pago_yellow_transparent">#FFEED5</color>
+    <color name="pago_red_transparent">#FEDEDE</color>
+
+    <color name="pago_transparent">#00FFFFFF</color>
+
+    <color name="pago_light_gray_inactive">#C1C8D7</color>
+    <color name="pago_rounded_number_bg">#F3F3F3</color>
+    <color name="pago_person_bg">#E5E5E5</color>
+    <color name="pago_inactive_btn">#E5E5E5</color>
+
+    <color name="pago_text_view_background">#F3F3F3</color>
+
+</resources>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Text sizes-->
+    <dimen name="pago_pago_text_10">10sp</dimen>
+    <dimen name="pago_pago_text_12">12sp</dimen>
+    <dimen name="pago_pago_text_14">14sp</dimen>
+    <dimen name="pago_pago_text_16">16sp</dimen>
+    <dimen name="pago_pago_text_20">20sp</dimen>
+    <dimen name="pago_pago_text_24">24sp</dimen>
+    <dimen name="pago_text_32">32sp</dimen>
+
+    <!--Text line heights-->
+    <dimen name="pago_text_lh_13">13dp</dimen>
+    <dimen name="pago_text_lh_18">18dp</dimen>
+    <dimen name="pago_text_lh_20">20dp</dimen>
+    <dimen name="pago_text_lh_22">22dp</dimen>
+    <dimen name="pago_text_lh_28">28dp</dimen>
+    <dimen name="pago_text_lh_30">30dp</dimen>
+
+    <!--Text-->
+    <color name="pago_inactive_text_gray_light">#C1C8D7</color>
+    <color name="pago_tertiary_text_gray">#666666</color>
+    <color name="pago_secondary_text_gray_dark">#666666</color>
+    <color name="pago_primary_text_black">#161F28</color>
+    <color name="pago_dark_yellow_text">#614C00</color>
+    <color name="pago_text_white">#ffffff</color>
+    <color name="pago_text_green">#2CC84D</color>
+    <color name="pago_text_blue">#2B59C3</color>
+
+    <!--Icons-->
+    <color name="pago_drawable_tertiary_gray">#98A5BE</color>
+
+    <!--Text styles-->
+
+    <style name="pago_roboto">
+        <item name="android:breakStrategy">balanced</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!--Roboto 12-->
+    <style name="pago_roboto_regular_10" parent="pago_roboto">
+        <item name="android:fontFamily">@font/pt_regular</item>
+        <item name="android:textSize">@dimen/pago_pago_text_10</item>
+        <item name="lineHeight">@dimen/pago_text_lh_13</item>
+    </style>
+
+    <style name="pago_roboto_medium_10" parent="pago_roboto_regular_10">
+        <item name="android:fontFamily">@font/pt_medium</item>
+    </style>
+
+    <style name="pago_roboto_bold_10" parent="pago_roboto_regular_10">
+        <item name="android:fontFamily">@font/pt_bold</item>
+    </style>
+
+    <!--Roboto 12-->
+    <style name="pago_roboto_regular_12" parent="pago_roboto">
+        <item name="android:fontFamily">@font/pt_regular</item>
+        <item name="android:textSize">@dimen/pago_pago_text_12</item>
+        <item name="lineHeight">@dimen/pago_text_lh_18</item>
+    </style>
+
+    <style name="pago_roboto_medium_12" parent="pago_roboto_regular_12">
+        <item name="android:fontFamily">@font/pt_medium</item>
+    </style>
+
+    <style name="pago_roboto_bold_12" parent="pago_roboto_regular_12">
+        <item name="android:fontFamily">@font/pt_bold</item>
+    </style>
+
+
+    <!--Roboto 14-->
+    <style name="pago_roboto_regular_14" parent="pago_roboto">
+        <item name="android:fontFamily">@font/pt_regular</item>
+        <item name="android:textSize">@dimen/pago_pago_text_14</item>
+        <item name="lineHeight">@dimen/pago_text_lh_20</item>
+    </style>
+
+    <style name="pago_roboto_medium_14" parent="pago_roboto_regular_14">
+        <item name="android:fontFamily">@font/pt_medium</item>
+        <item name="android:textSize">@dimen/pago_pago_text_14</item>
+        <item name="lineHeight">@dimen/pago_text_lh_20</item>
+    </style>
+
+    <style name="pago_roboto_bold_14" parent="pago_roboto_regular_14">
+        <item name="android:fontFamily">@font/pt_bold</item>
+    </style>
+
+
+    <!--Roboto 16-->
+
+    <style name="pago_roboto_regular_16" parent="pago_roboto">
+        <item name="android:fontFamily">@font/pt_regular</item>
+        <item name="android:textSize">@dimen/pago_pago_text_16</item>
+        <item name="lineHeight">@dimen/pago_text_lh_22</item>
+    </style>
+
+    <style name="pago_roboto_medium_16" parent="pago_roboto_regular_16">
+        <item name="android:fontFamily">@font/pt_medium</item>
+    </style>
+
+    <style name="pago_roboto_bold_16" parent="pago_roboto_regular_16">
+        <item name="android:fontFamily">@font/pt_bold</item>
+    </style>
+
+    <!--Roboto 20-->
+    <style name="pago_roboto_medium_20" parent="pago_roboto">
+        <item name="android:fontFamily">@font/pt_medium</item>
+        <item name="android:textSize">@dimen/pago_pago_text_20</item>
+        <item name="lineHeight">@dimen/pago_text_lh_22</item>
+    </style>
+
+    <style name="pago_roboto_bold_20" parent="pago_roboto_medium_20">
+        <item name="fontFamily">@font/pt_bold</item>
+    </style>
+
+    <style name="pago_roboto_bold_24" parent="pago_roboto_regular_24">
+        <item name="lineHeight">@dimen/pago_text_lh_28</item>
+        <item name="android:fontFamily">@font/pt_bold</item>
+    </style>
+
+    <!--Roboto 24-->
+    <style name="pago_roboto_regular_24" parent="pago_roboto">
+        <item name="android:fontFamily">@font/pt_regular</item>
+        <item name="android:textSize">@dimen/pago_pago_text_24</item>
+        <item name="lineHeight">@dimen/pago_text_lh_22</item>
+    </style>
+
+    <style name="pago_roboto_medium_24" parent="pago_roboto_regular_24">
+        <item name="android:fontFamily">@font/pt_medium</item>
+    </style>
+
+
+    <style name="pago_text_title" parent="pago_roboto_bold_24">
+        <item name="android:textColor">@color/pago_primary_text_black</item>
+    </style>
+
+
+    <!--Roboto 32 - Only used on numeric keyboards, such as PIN-->
+    <style name="pago_roboto_regular_32" parent="pago_roboto">
+        <item name="android:fontFamily">@font/pt_regular</item>
+        <item name="android:textSize">@dimen/pago_text_32</item>
+        <item name="lineHeight">@dimen/pago_text_lh_22</item>
+    </style>
+
+
+    <style name="pago_subtitle_view" parent="pago_roboto_medium_12">
+        <item name="android:fontFamily">@font/pt_medium</item>
+        <item name="android:drawablePadding">@dimen/pago_margin_8</item>
+        <item name="android:textColor">@color/pago_tertiary_text_gray</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="pago_error_view" parent="pago_roboto_regular_12">
+        <item name="android:drawablePadding">@dimen/pago_margin_8</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/pago_red</item>
+    </style>
+
+</resources>
