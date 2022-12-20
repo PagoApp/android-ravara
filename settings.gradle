@@ -5,13 +5,32 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+def githubProperties = new Properties()
+
+try {
+    githubProperties.load(new FileInputStream(file("github.properties")))
+} catch (Exception e) {
+    println("github.properties not found")
+    println(e)
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/PagoApp/android-recycler-view")
+            credentials {
+                username = githubProperties.getProperty("gpr.usr") ?: System.getenv("GPR_USER")
+                password = githubProperties.getProperty("gpr.key") ?: System.getenv("GPR_API_KEY")
+            }
+        }
     }
 }
 rootProject.name = "PagoRecyclerView"
 include ':app'
-include ':recycleView'
+include ':recyclerView'

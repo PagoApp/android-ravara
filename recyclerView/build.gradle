@@ -4,6 +4,9 @@ plugins {
     id 'kotlin-parcelize'
 }
 
+apply from: file('publish.gradle')
+
+
 android {
     namespace 'app.pago.recyclerview'
     compileSdk 32
