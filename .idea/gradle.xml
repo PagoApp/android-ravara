@@ -11,7 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/recyclerView" />
+            <option value="$PROJECT_DIR$/ravara" />
           </set>
         </option>
       </GradleProjectSettings>

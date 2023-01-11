@@ -1,13 +1,13 @@
 package app.pago.sample
 
 import androidx.lifecycle.ViewModel
-import app.pago.recyclerview.models.PagoRecyclerAdapterBaseItem
+import app.pago.ravara.models.RavaraBaseItem
 import app.pago.sample.cells.data.SimpleBottomSheetModel
 import app.pago.sample.cells.data.SpacerCellModel
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class SampleViewModel : ViewModel() {
-    val data = MutableStateFlow<List<PagoRecyclerAdapterBaseItem>>(listOf())
+    val data = MutableStateFlow<List<RavaraBaseItem>>(listOf())
 
     fun addItem(title: String) {
         data.value = data.value + SimpleBottomSheetModel(

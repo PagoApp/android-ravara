@@ -23,7 +23,7 @@ dependencyResolutionManagement {
 
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/PagoApp/android-recycler-view")
+            url = uri("https://maven.pkg.github.com/PagoApp/android-ravara")
             credentials {
                 username = githubProperties.getProperty("gpr.usr") ?: System.getenv("GPR_USER")
                 password = githubProperties.getProperty("gpr.key") ?: System.getenv("GPR_API_KEY")
@@ -33,4 +33,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "PagoRecyclerView"
 include ':app'
-include ':recyclerView'
+include ':ravara'

@@ -2,7 +2,7 @@ package app.pago.sample.cells.data
 
 import android.os.Parcelable
 import androidx.annotation.ColorRes
-import app.pago.recyclerview.models.PagoRecyclerAdapterBaseItem
+import app.pago.ravara.models.RavaraBaseItem
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -16,4 +16,4 @@ data class SimpleBottomSheetModel(
     val isDisabled: Boolean = false,
     val listener: () -> Unit,
     val hasBottomDivider: Boolean = true
-) : PagoRecyclerAdapterBaseItem(id), Parcelable
+) : RavaraBaseItem(id), Parcelable

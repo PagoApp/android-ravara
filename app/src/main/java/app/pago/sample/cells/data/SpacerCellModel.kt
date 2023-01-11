@@ -1,6 +1,6 @@
 package app.pago.sample.cells.data
 
-import app.pago.recyclerview.models.PagoRecyclerAdapterBaseItem
+import app.pago.ravara.models.RavaraBaseItem
 import kotlinx.parcelize.Parcelize
 
 /**
@@ -9,4 +9,4 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class SpacerCellModel(val backgroundResId: Int, val height: Int, override val id: String) :
-    PagoRecyclerAdapterBaseItem(id)
+    RavaraBaseItem(id)
