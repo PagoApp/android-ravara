@@ -1,3 +1,3 @@
 set -e
 
-./gradlew build -p recyclerView -x lint publishGithub -PversionName=$1
+./gradlew build -p ravara -x lint publishGithub -PversionName=$1
