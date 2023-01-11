@@ -8,7 +8,7 @@ import app.pago.ravara.lib.RavaraController
 import app.pago.ravara.lib.RavaraControllerBuilder
 import app.pago.ravara.models.RavaraBaseViewHolder
 
-class PagoRecyclerViewAdapter() :
+class RavaraRecyclerViewAdapter() :
     RecyclerView.Adapter<RavaraBaseViewHolder>(),
     CoreAdapter<RavaraBaseItem> {
 

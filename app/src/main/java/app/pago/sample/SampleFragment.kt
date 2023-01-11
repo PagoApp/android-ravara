@@ -10,7 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import app.pago.ravara.PagoRecyclerViewAdapter
+import app.pago.ravara.RavaraRecyclerViewAdapter
 import app.pago.ravara.lib.RavaraController
 import app.pago.ravara.lib.RavaraControllerBuilder
 import app.pago.sample.cells.SimpleBottomSheetCell
@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 class SampleFragment : Fragment() {
 
     private lateinit var binding: FragmentSampleBinding;
-    private val listAdapter = PagoRecyclerViewAdapter()
+    private val listAdapter = RavaraRecyclerViewAdapter()
     private lateinit var controller: RavaraController;
     private val viewModel by viewModels<SampleViewModel>()
 
