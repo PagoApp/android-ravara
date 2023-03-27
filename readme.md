@@ -6,10 +6,15 @@ It draws inspiration from Epoxy by abstracting the list adapter letting the user
 
 # Contents
 [Components](#Components)
+
 [Cell](#Cell)
+
 [Controller](#Controller)
+
 [Decorator](#Decorator)
+
 [Putting it all together](#Putting it all together)
+
 [Sample App](#Sample App)
 
 
