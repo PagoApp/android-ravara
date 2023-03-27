@@ -13,9 +13,9 @@ It draws inspiration from Epoxy by abstracting the list adapter letting the user
 
 [Decorator](#Decorator)
 
-[Putting it all together](#Putting_it_all_together)
+[Putting it all together](#Putting-it-all-together)
 
-[Sample App](#Sample_App)
+[Sample App](#Sample-App)
 
 
 # Components
