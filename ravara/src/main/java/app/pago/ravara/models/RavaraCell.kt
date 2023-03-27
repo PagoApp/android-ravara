@@ -20,7 +20,7 @@ abstract class RavaraCell(
         decorators: List<RavaraDecorator>
     )
 
-    fun createViewHolder(
+    open fun createViewHolder(
         parent: ViewGroup,
     ): RavaraBaseViewHolder {
         val binding = inflate.invoke(LayoutInflater.from(parent.context), parent, false)
