@@ -168,7 +168,7 @@ Using the `RavaraControllerBuilder` class you can construct a controller object 
 - `useCells`: Use this method to pass an `Array` of `RavaraCell` objects. This is where you specify what type of cells you'd want to use.
 - `loadData`: Load a list of initial data for your data models. The list is of type `RavaraBaseItem` so you can mix and match your data models in a single call to `loadData.` It also gets a second `shouldClear = true` parameter that specifies whether or not the previous data models should be deleted before loading the new ones.
 - `onConflict` : Provide conflic solvers for your cell. More on this later in the guide.
-- `build`: Create the controller. It takes as argument the `recyclerAdapter` for your list. You should use an instance of `RavaraRecyclerViewAdapter` as your `recyclerAdapter`, but later in the guide you'll see how you can define your own
+- `build`: Create the controller. It takes as argument the `recyclerAdapter` for your list. You have to create a `RavaraRecyclerViewAdapter` as your `recyclerAdapter`.
 
 
 For our basic example we'd create the following controller:
@@ -237,9 +237,23 @@ fun ABConflicSolver(item: RavaraBaseItem): Class<*>? {
 
 ## How to use the controller
 
-## Create a custom RecyclerAdapter
+The controller is the main way to interact with your list. It provides basic methods to load and manipulate data in the list:
+- `addItem(item: RavaraBaseItem)`
+- `addList(list: List<RavaraBaseItem?>`; shouldClear: Boolean)` The second param specifies whether or not the current list will be deleted before inserting the new one
+- `removeItem(fn: (item: RavaraBaseItem) -> Boolean)`
+- `removeItem(itemId: String)`;  This uses the id you supply on your `RavaraBaseItem` objects to match the items in the list 
+- `removeItem(item: RavaraBaseItem)`; Uses `List.indexOf` to match the items
+- `clearList()`
+- `updateItem(item: RavaraBaseItem)`; Matches the item by id with the one currently in the list and replaces it with the one supplied
 
+The adapter also provides you with the `notifyDataSetChanged()` to notify the underlying `RecyclerView.Adapter` the data has changed. `RavaraController` is `open` so you can create your custom controler with extra methods and properties you need and use `notifyDataSetChanged()` to trigger the UI update.
 
+# Decorators
+
+To explain decorators we'll first present a simple example, then we'll extend it to a more usefull use case.
+
+Let's say you have some _Cells_ that display a red icon for an error status and a green icon for a success status.
+You could add the logic to decide whether the icon is red or green in each cell, but that would meed having duplicated code. So an easy improvment would be to extract that logic in a function something like this:
 # Sample App
 
 The reposiotry contains a sample app that defines a basic list that defines two cells:
