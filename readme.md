@@ -15,8 +15,6 @@ Råvara is Plug and play by not defining it's own UI widget. It relies directly 
 
 [Decorator](#Decorator)
 
-[Putting it all together](#Putting-it-all-together)
-
 [Sample App](#Sample-App)
 
 
@@ -108,7 +106,7 @@ Now that we have both our prerequisites we can define our cell.
 ``` 
 class SimpleCell : RavaraCell(
     BasicCellBinding::inflate,
-    SimpleCelltModel::class.java
+    SimpleCellModel::class.java
 ) {
     override fun onBindViewHolder(
         binding: ViewBinding, item: RavaraBaseItem,
@@ -273,11 +271,12 @@ To handle these situations Råvara provides you with support for _Decorators_ ou
 To create a _Decorator_ for the above example you'd do something like this:
 
 ```
-class StatusDecorator(targetView: SomeView, private val object:SomeObject): 
+class StatusDecorator(targetView: SomeView): 
  RavaraDecorator(targetView, DecoratorStrategy.POST_BIND){
  
-  override fun apply() {
-    if(object.isSuccess){
+  override fun apply(item: RavaraBaseItem) {
+    item as SomeObject
+    if(item.isSuccess){
       targetView.color = "#00ff00";
     }else{
      targetView.color = "#ff0000";
@@ -288,7 +287,30 @@ class StatusDecorator(targetView: SomeView, private val object:SomeObject):
 
 Let's discuss the two parameters passed to the constructor of `RavaraDecorator`. First, we have the targetView. This is an Android `View`, but it's an `open` property so feel free to override it to your specific View so you don't have to perform any casts. The second parameter is a `DecoratorStrategy`. This enum has 3 posible values. `PRE_BIND` and `POST_BIND` are used if you want Råvara to automatically apply your decorators, either before calling `onBindViewHolder` on your _Cell_ or after. There is also the `MANUAL` option if you need to manually call the decorator at a specific time during `onBindViewHolder`. As you can see in the section dedicated to _Cells_, `onBindViewHolder` get a list of decorators as parameter, so you can find your decorator in there and manually call its `apply` method when you find it appropriate. 
 
-Now that we have a _Decorator_ defined, there are 2 ways to bind it to a _Cell_. We can either override `RavaraCell.getDecorators` to specify a list of _Decorators_ for each individual item in the list, or we can use `dynamicDecorators` on the constructor of `RavaraCell` 
+The `apply` method get as a parameter the data item of the cell instance the decorator is applied to at one moment.
+
+Now that we have a _Decorator_ defined, there are 2 ways to bind it to a _Cell_. The decorators specified by each of these 2 ways are combined in a single list so you can use both at the same time.
+
+1. Override `RavaraCell.getDecorators` to specify a list of _Decorators_. This method gets the current item from the data list as a parameter so you can specify a list of _Decorators_ for each individual item in the list
+
+```
+class OtherSimpleCell : RavaraCell(
+    OtherBasicCellBinding::inflate,
+    OtherSimpleCellModel::class.java
+) {
+
+// Rest of the code
+
+  override fun getDecorators(binding: ViewBinding,
+        item: RavaraBaseItem): List<RavaraDecorator> {
+        
+    return listOf(StatusDecorator(binding.someView)        
+  }
+}
+
+```
+
+2. Use `dynamicDecorators` on the constructor of `RavaraCell`. This is more intended for supplying a different list of decorators for each of your different lists. You will not be able to direcly specify a list of _Decorators_ for each individual itme in the list, but you can stil use the parameter from `RavaraDecorator.apply` to implement that behaviour should you require to.
 
 
 # Sample App
