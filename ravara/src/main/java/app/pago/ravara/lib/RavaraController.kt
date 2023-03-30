@@ -13,7 +13,7 @@ open class RavaraController(
     val dataList: MutableList<RavaraBaseItem>,
     private val conflictSolvers:
     List<(item: RavaraBaseItem) ->
-    Class<*>>,
+    Class<*>?>,
     private val recyclerAdapter: RecyclerView.Adapter<RavaraBaseViewHolder>
 ) {
 
@@ -36,8 +36,10 @@ open class RavaraController(
         } else {
             for (conflictSolver in conflictSolvers) {
                 val cellClass = conflictSolver(item)
-                return cellList.first { it.javaClass == cellClass }.viewType
-                    ?: throw PagoException("View type is not yet initialized")
+                if(cellClass != null) {
+                    return cellList.first { it.javaClass == cellClass }.viewType
+                        ?: throw PagoException("View type is not yet initialized")
+                }
             }
             throw PagoException("No conflict solver returned a PagoRecyclerViewCell class")
         }
