@@ -253,7 +253,44 @@ The adapter also provides you with the `notifyDataSetChanged()` to notify the un
 To explain decorators we'll first present a simple example, then we'll extend it to a more usefull use case.
 
 Let's say you have some _Cells_ that display a red icon for an error status and a green icon for a success status.
+
 You could add the logic to decide whether the icon is red or green in each cell, but that would meed having duplicated code. So an easy improvment would be to extract that logic in a function something like this:
+
+```
+fun setIconColorToStatus(iconView: SomeView, object: SomeObject){
+  if(object.isSuccess){
+    iconView.color = "#00ff00";
+  }else{
+     iconView.color = "#ff0000";
+  }
+}
+```
+
+For this particular example this would be a good enough optimization. But let's say that some of those _Cells_ need to display that status icon only in some lists. To do that you would have to add to each cell a parameter to specifiy whether or not you show the status and also to handle both options. This is once again code duplication and some extra login on your part.
+
+To handle these situations Råvara provides you with support for _Decorators_ out of the box. A _Decorator_ is a simple abstract class that holds a `View` and expects you to overide an `apply` method to manipulate that view. 
+
+To create a _Decorator_ for the above example you'd do something like this:
+
+```
+class StatusDecorator(targetView: SomeView, private val object:SomeObject): 
+ RavaraDecorator(targetView, DecoratorStrategy.POST_BIND){
+ 
+  override fun apply() {
+    if(object.isSuccess){
+      targetView.color = "#00ff00";
+    }else{
+     targetView.color = "#ff0000";
+    }
+  }
+}
+```
+
+Let's discuss the two parameters passed to the constructor of `RavaraDecorator`. First, we have the targetView. This is an Android `View`, but it's an `open` property so feel free to override it to your specific View so you don't have to perform any casts. The second parameter is a `DecoratorStrategy`. This enum has 3 posible values. `PRE_BIND` and `POST_BIND` are used if you want Råvara to automatically apply your decorators, either before calling `onBindViewHolder` on your _Cell_ or after. There is also the `MANUAL` option if you need to manually call the decorator at a specific time during `onBindViewHolder`. As you can see in the section dedicated to _Cells_, `onBindViewHolder` get a list of decorators as parameter, so you can find your decorator in there and manually call its `apply` method when you find it appropriate. 
+
+Now that we have a _Decorator_ defined, there are 2 ways to bind it to a _Cell_. We can either override `RavaraCell.getDecorators` to specify a list of _Decorators_ for each individual item in the list, or we can use `dynamicDecorators` on the constructor of `RavaraCell` 
+
+
 # Sample App
 
 The reposiotry contains a sample app that defines a basic list that defines two cells:
