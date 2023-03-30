@@ -1,9 +1,10 @@
 package app.pago.ravara.decorators
 
 import android.view.View
+import app.pago.ravara.models.RavaraBaseItem
 
 abstract class RavaraDecorator(
-    protected val targetView: View,
+    protected open val targetView: View,
     val applyStrategy: DecoratorStrategy
 //    private val binding: ViewBinding,
 //    private val item: PagoRecyclerAdapterBaseItem
@@ -14,5 +15,5 @@ abstract class RavaraDecorator(
         MANUAL
     }
 
-    abstract fun apply()
+    abstract fun apply(item: RavaraBaseItem)
 }

@@ -66,14 +66,14 @@ open class RavaraController(
 
         for (decorator in decoratorsGroupedByStrategy[RavaraDecorator.DecoratorStrategy.PRE_BIND]
             ?: emptyList()) {
-            decorator.apply()
+            decorator.apply(item)
         }
 
         viewHolder.bindViewHolder(item, allDecorators)
 
         for (decorator in decoratorsGroupedByStrategy[RavaraDecorator.DecoratorStrategy.POST_BIND]
             ?: emptyList()) {
-            decorator.apply()
+            decorator.apply(item)
         }
     }
 
@@ -96,6 +96,13 @@ open class RavaraController(
         recyclerAdapter.notifyDataSetChanged()
     }
 
+
+    /**
+     * Due to the way the recycler view works,
+     * when we delete an item, it first updates the layout, making the height smaller, and then starts animating the items
+     * If the view isn't constraint properly, the last item in the list might appear to blink
+     * since it first is clipped and then animated back into the view
+     */
     fun removeItem(fn: (item: RavaraBaseItem) -> Boolean) {
         // Remove all items that match the function passed in and notify the adapter
         val itemsToRemove = dataList.filter(fn)
