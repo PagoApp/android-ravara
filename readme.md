@@ -6,7 +6,11 @@ It draws inspiration from Epoxy by abstracting the list adapter letting the user
 
 Råvara is Plug and play by not defining it's own UI widget. It relies directly on the default `RecyclerView` to host all its capabilities by defining a `RecyclerView.Adapter` that you can bind to your list. 
 
+
 # Contents
+
+[How to install](#How-to-install)
+
 [Components](#Components)
 
 [Cell](#Cell)
@@ -17,6 +21,10 @@ Råvara is Plug and play by not defining it's own UI widget. It relies directly 
 
 [Sample App](#Sample-App)
 
+
+# How to install
+
+_TODO_
 
 # Components
 
