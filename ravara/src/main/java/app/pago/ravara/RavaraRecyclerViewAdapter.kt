@@ -8,11 +8,15 @@ import app.pago.ravara.lib.RavaraController
 import app.pago.ravara.lib.RavaraControllerBuilder
 import app.pago.ravara.models.RavaraBaseViewHolder
 
-class RavaraRecyclerViewAdapter() :
+class RavaraRecyclerViewAdapter :
     RecyclerView.Adapter<RavaraBaseViewHolder>(),
     CoreAdapter<RavaraBaseItem> {
 
-    var controller: RavaraController = RavaraControllerBuilder().build(this)
+    var controller: RavaraController = RavaraControllerBuilder().build()
+
+    init {
+        bindAdapterToController(controller)
+    }
 
     // This is ignored. The actual data list is inside the controller
     override val list: MutableList<RavaraBaseItem> = controller.dataList
@@ -64,5 +68,9 @@ class RavaraRecyclerViewAdapter() :
         position: Int
     ) {
         controller.bindViewHolder(holder, position)
+    }
+
+    fun bindAdapterToController(controller: RavaraController) {
+        controller.setAdapter(this)
     }
 }

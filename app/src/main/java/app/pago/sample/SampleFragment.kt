@@ -46,9 +46,9 @@ class SampleFragment : Fragment() {
                 SpacerCell(),
                 SimpleBottomSheetCell()
             )
-        ).build(listAdapter)
+        ).build()
 
-        listAdapter.controller = controller
+        listAdapter.bindAdapterToController(controller)
         binding.recyclerView.apply {
             this.adapter = listAdapter
             layoutManager = LinearLayoutManager(context)

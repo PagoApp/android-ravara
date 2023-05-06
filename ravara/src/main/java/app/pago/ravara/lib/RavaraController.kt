@@ -3,19 +3,23 @@ package app.pago.ravara.lib
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.pago.ravara.PagoException
+import app.pago.ravara.RavaraRecyclerViewAdapter
 import app.pago.ravara.models.RavaraBaseItem
 import app.pago.ravara.decorators.RavaraDecorator
 import app.pago.ravara.models.RavaraCell
 import app.pago.ravara.models.RavaraBaseViewHolder
 
 open class RavaraController(
-    private val cellList: List<RavaraCell>,
-    val dataList: MutableList<RavaraBaseItem>,
-    private val conflictSolvers:
-    List<(item: RavaraBaseItem) ->
-    Class<*>?>,
-    private val recyclerAdapter: RecyclerView.Adapter<RavaraBaseViewHolder>
+    private val cellList: List<RavaraCell> = emptyList(),
+    val dataList: MutableList<RavaraBaseItem> = mutableListOf(),
+    private val conflictSolvers: List<(item: RavaraBaseItem) -> Class<*>?> = emptyList(),
 ) {
+
+    lateinit var recyclerAdapter: RecyclerView.Adapter<RavaraBaseViewHolder>
+
+    fun setAdapter(adapter: RavaraRecyclerViewAdapter) {
+        recyclerAdapter = adapter
+    }
 
     init {
         cellList.forEachIndexed { index, cell ->

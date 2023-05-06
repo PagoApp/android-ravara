@@ -1,9 +1,7 @@
 package app.pago.ravara.lib
 
-import androidx.recyclerview.widget.RecyclerView
 import app.pago.ravara.models.RavaraBaseItem
 import app.pago.ravara.models.RavaraCell
-import app.pago.ravara.models.RavaraBaseViewHolder
 
 class RavaraControllerBuilder {
     private val cellList = mutableListOf<RavaraCell>()
@@ -40,12 +38,11 @@ class RavaraControllerBuilder {
         return this
     }
 
-    fun build(recyclerAdapter: RecyclerView.Adapter<RavaraBaseViewHolder>): RavaraController {
+    fun build(): RavaraController {
         return RavaraController(
             cellList,
             dataList,
             conflictSolvers,
-            recyclerAdapter
         )
     }
 }
