@@ -26,7 +26,7 @@ Råvara is Plug and play by not defining it's own UI widget. It relies directly 
 
 First you need to define the repository in your project's gradle file
 
-```{kotlin}
+```kotlin
     repositories {
         google()
         mavenCentral()
