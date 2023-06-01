@@ -19,7 +19,7 @@ Råvara is Plug and play by not defining it's own UI widget. It relies directly 
 
 [Decorator](#Decorator)
 
-[Sample Apps](#Sample-App)
+[Sample App](#Sample-App)
 
 
 # How to install
