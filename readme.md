@@ -26,7 +26,7 @@ Råvara is Plug and play by not defining it's own UI widget. It relies directly 
 
 First you need to define the repository in your project's gradle file
 
-```{kotlin}
+```kotlin
     repositories {
         google()
         mavenCentral()
@@ -40,11 +40,11 @@ First you need to define the repository in your project's gradle file
 
 After this you can add the dependency to your app's gradle file
 
-```{kotlin}
+```kotlin
     implementation("app.pago:ravara:$ravara_version")
 ```
 
-You can find the latest version of Ravara [here](https://github.com/PagoApp/android-ravara/packages/1769163)
+You can find the latest version of Råvara [here](https://github.com/PagoApp/android-ravara/packages/1769163)
 
 # Components
 
@@ -65,7 +65,7 @@ It is used to:
 First make sure AndroidX View Binding is enabled in your app's gradle config
 
 Before defining a Cell we need to define a layout XML for it and a data model.
-A data model will be the class that holds all the data necesarry to build the UI.
+A data model will be the class that holds all the data necessary to build the UI.
 
 For this guide we'll create a basic cell that has:
 - Some text
@@ -76,7 +76,7 @@ For this guide we'll create a basic cell that has:
 
 So for this we'll use this layout XML named `basic_cell.xml`
 
-```{kotlin}
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -115,7 +115,7 @@ So for this we'll use this layout XML named `basic_cell.xml`
 ```
 Next we need to define a class that will hold all the properties we said we want to be able to customize
 
-```{kotlin}
+```kotlin
 @Parcelize
 data class SimpleCelltModel(
     override val id: String,
@@ -131,7 +131,7 @@ As you can see, our data model class inherits from `RavaraBaseItem`. The class i
 
 Now that we have both our prerequisites we can define our cell.
 
-``` {kotlin}
+``` kotlin
 class SimpleCell : RavaraCell(
     BasicCellBinding::inflate,
     SimpleCellModel::class.java
@@ -193,13 +193,13 @@ Using the `RavaraControllerBuilder` class you can construct a controller object 
 
 - `useCells`: Use this method to pass an `Array` of `RavaraCell` objects. This is where you specify what type of cells you'd want to use.
 - `loadData`: Load a list of initial data for your data models. The list is of type `RavaraBaseItem` so you can mix and match your data models in a single call to `loadData.` It also gets a second `shouldClear = true` parameter that specifies whether or not the previous data models should be deleted before loading the new ones.
-- `onConflict` : Provide conflic solvers for your cell. More on this later in the guide.
+- `onConflict` : Provide conflict solvers for your cell. More on this later in the guide.
 - `build`: Create the controller. It takes as argument the `recyclerAdapter` for your list. You have to create a `RavaraRecyclerViewAdapter` as your `recyclerAdapter`.
 
 
 For our basic example we'd create the following controller:
 
-```{kotlin}
+```kotlin
 // ...
 
 private val listAdapter = RavaraRecyclerViewAdapter()
@@ -224,9 +224,9 @@ The reason you pass the class of your data model to the constructor of `RavaraCe
 
 Let's take the following example:
 
-```{kotlin}
-class CellA: RavaraCell(SomeBinding::inflate, DataModel::class.java){...}
-class CellB: RavaraCell(SomeOtherBinding::inflate, DataModel::class.java){...}
+```kotlin
+class CellA: RavaraCell(SomeBinding::inflate, DataModel::class.java){/*...*/}
+class CellB: RavaraCell(SomeOtherBinding::inflate, DataModel::class.java){/*...*/}
 
 data class DataModel(override val id: String, isA: Boolean)
 
@@ -234,7 +234,7 @@ data class DataModel(override val id: String, isA: Boolean)
 
 Both cells bind to `DataModel` for their data model. But we want A cells only if `dataModel.isA == true`. If we were to create the controller like this:
 
-```{kotlin}
+```kotlin
 controller = RavaraControllerBuilder().useCells(
             arrayOf(
                 CellA(),
@@ -249,7 +249,7 @@ To achieve the behaviour we want and fix the error, we can define a conflict sol
 
 So to fix our issues we'd define the following conflict solver and pass it as argument to `onConflict` on the builder:
 
-```{kotlin}
+```kotlin
 fun ABConflictSolver(item: RavaraBaseItem): Class<*>? {
   return (item as? DataModel)?.let {
     return if(it.isA) { CellA::class.java} else {CellB::class.java} 
@@ -269,7 +269,7 @@ The controller is the main way to interact with your list. It provides basic met
 - `clearList()`
 - `updateItem(item: RavaraBaseItem)`; Matches the item by id with the one currently in the list and replaces it with the one supplied
 
-The adapter also provides you with the `notifyDataSetChanged()` to notify the underlying `RecyclerView.Adapter` the data has changed. `RavaraController` is `open` so you can create your custom controler with extra methods and properties you need and use `notifyDataSetChanged()` to trigger the UI update.
+The adapter also provides you with the `notifyDataSetChanged()` to notify the underlying `RecyclerView.Adapter` the data has changed. `RavaraController` is `open` so you can create your custom controller with extra methods and properties you need and use `notifyDataSetChanged()` to trigger the UI update.
 
 # Decorators
 
@@ -277,11 +277,11 @@ To explain decorators we'll first present a simple example, then we'll extend it
 
 Let's say you have some _Cells_ that display a red icon for an error status and a green icon for a success status.
 
-You could add the logic to decide whether the icon is red or green in each cell, but that would meed having duplicated code. So an easy improvment would be to extract that logic in a function something like this:
+You could add the logic to decide whether the icon is red or green in each cell, but that would meed having duplicated code. So an easy improvement would be to extract that logic in a function something like this:
 
-```{kotlin}
-fun setIconColorToStatus(iconView: SomeView, object: SomeObject){
-  if(object.isSuccess){
+```kotlin
+fun setIconColorToStatus(iconView: SomeView, dataObject: SomeObject){
+  if(dataObject.isSuccess){
     iconView.color = "#00ff00";
   }else{
      iconView.color = "#ff0000";
@@ -295,7 +295,7 @@ To handle these situations Råvara provides you with support for _Decorators_ ou
 
 To create a _Decorator_ for the above example you'd do something like this:
 
-```{kotlin}
+```kotlin
 class StatusDecorator(targetView: SomeView): 
  RavaraDecorator(targetView, DecoratorStrategy.POST_BIND){
  
@@ -318,7 +318,7 @@ Now that we have a _Decorator_ defined, there are 2 ways to bind it to a _Cell_.
 
 1. Override `RavaraCell.getDecorators` to specify a list of _Decorators_. This method gets the current item from the data list as a parameter so you can specify a list of _Decorators_ for each individual item in the list
 
-```{kotlin}
+```kotlin
 class OtherSimpleCell : RavaraCell(
     OtherBasicCellBinding::inflate,
     OtherSimpleCellModel::class.java
@@ -329,7 +329,7 @@ class OtherSimpleCell : RavaraCell(
   override fun getDecorators(binding: ViewBinding,
         item: RavaraBaseItem): List<RavaraDecorator> {
         
-    return listOf(StatusDecorator(binding.someView)        
+    return listOf(StatusDecorator(binding.someView))        
   }
 }
 
