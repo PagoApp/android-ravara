@@ -24,6 +24,8 @@ Råvara is Plug and play by not defining it's own UI widget. It relies directly 
 
 # How to install
 
+## Github Packages
+
 First you need to define the repository in your project's gradle file
 
 ```kotlin
@@ -34,6 +36,10 @@ First you need to define the repository in your project's gradle file
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/PagoApp/android-ravara")
+            credentials {
+                username = "YourGithubUserId"
+                password = "GithubAccessToken"
+            }
         }
     }
 ```
@@ -42,6 +48,28 @@ After this you can add the dependency to your app's gradle file
 
 ```kotlin
     implementation("app.pago:ravara:$ravara_version")
+```
+
+GithubPackages requires you to be authenticated to download any package. You can find your user ID using https://api.github.com/users/your_github_user_name  For the password, the [Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#) key needs package read scopes.
+
+## Jitpack
+
+If you don't want to authenticate, you can get the library from Jitpack.
+
+You need to define this repository instead: 
+```kotlin
+    repositories {
+        google()
+        mavenCentral()
+
+        maven { url 'https://jitpack.io' }
+    }
+```
+
+Then you can add this dependency:
+
+```kotlin
+    implementation 'com.github.PagoApp:android-ravara:$ravara_version'
 ```
 
 You can find the latest version of Råvara [here](https://github.com/PagoApp/android-ravara/packages/1769163)
