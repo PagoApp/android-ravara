@@ -31,7 +31,10 @@ open class RavaraController(
 
         val item = dataList[itemPosition]
         val cells = cellList.filter { it.dataType == item.javaClass }
-        if (cells.size == 1) {
+        if(cells.isEmpty()){
+            throw PagoException("No cell with data type ${item.javaClass}")
+        }
+        else if (cells.size == 1) {
             return cells[0].viewType ?: throw PagoException("View type is not yet initialized")
         } else {
             for (conflictSolver in conflictSolvers) {
@@ -63,15 +66,14 @@ open class RavaraController(
     ) {
         val item = dataList[position]
         val decorators = viewHolder.cell.getDecorators(viewHolder.binding, item)
-        val allDecorators = decorators + viewHolder.cell.dynamicDecorators
-        val decoratorsGroupedByStrategy = allDecorators.groupBy { it.applyStrategy }
+        val decoratorsGroupedByStrategy = decorators.groupBy { it.applyStrategy }
 
         for (decorator in decoratorsGroupedByStrategy[RavaraDecorator.DecoratorStrategy.PRE_BIND]
             ?: emptyList()) {
             decorator.apply(item)
         }
 
-        viewHolder.bindViewHolder(item, allDecorators)
+        viewHolder.bindViewHolder(item, decorators)
 
         for (decorator in decoratorsGroupedByStrategy[RavaraDecorator.DecoratorStrategy.POST_BIND]
             ?: emptyList()) {

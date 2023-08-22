@@ -9,7 +9,6 @@ import app.pago.ravara.lib.RavaraController
 abstract class RavaraCell(
     private val inflate: (inflater: LayoutInflater, parent: ViewGroup, attachToParent: Boolean) -> ViewBinding,
     val dataType: Class<*>,
-    val dynamicDecorators: List<RavaraDecorator> = emptyList()
 ) {
     var controller: RavaraController? = null
     var viewType: Int? = null
