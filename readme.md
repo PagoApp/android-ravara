@@ -342,9 +342,7 @@ Let's discuss the two parameters passed to the constructor of `RavaraDecorator`.
 
 The `apply` method get as a parameter the data item of the cell instance the decorator is applied to at one moment.
 
-Now that we have a _Decorator_ defined, there are 2 ways to bind it to a _Cell_. The decorators specified by each of these 2 ways are combined in a single list so you can use both at the same time.
-
-1. Override `RavaraCell.getDecorators` to specify a list of _Decorators_. This method gets the current item from the data list as a parameter so you can specify a list of _Decorators_ for each individual item in the list
+Now that we have a _Decorator_ defined, to bind it to the cell you need to override `RavaraCell.getDecorators` to specify a list of _Decorators_. This method gets the current item from the data list as a parameter so you can specify a list of _Decorators_ for each individual item in the list
 
 ```kotlin
 class OtherSimpleCell : RavaraCell(
@@ -362,9 +360,6 @@ class OtherSimpleCell : RavaraCell(
 }
 
 ```
-
-2. Use `dynamicDecorators` on the constructor of `RavaraCell`. This is more intended for supplying a different list of decorators for each of your different lists. You will not be able to direcly specify a list of _Decorators_ for each individual itme in the list, but you can stil use the parameter from `RavaraDecorator.apply` to implement that behaviour should you require to.
-
 
 # Sample App
 
