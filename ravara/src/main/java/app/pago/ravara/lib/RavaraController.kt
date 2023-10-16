@@ -190,4 +190,17 @@ open class RavaraController(
         recyclerAdapter.notifyDataSetChanged()
     }
 
+    /**
+     * Replace the existing data list with a new one, but only if the 2 are different
+     *
+     * @return True if the list was replaced, false otherwise
+     */
+    fun replaceListIfDistinct(list: List<RavaraBaseItem>): Boolean{
+        if(dataList != list){
+           addList(list, true)
+            return true
+        }
+
+        return false
+    }
 }

@@ -290,7 +290,8 @@ fun ABConflictSolver(item: RavaraBaseItem): Class<*>? {
 
 The controller is the main way to interact with your list. It provides basic methods to load and manipulate data in the list:
 - `addItem(item: RavaraBaseItem)`
-- `addList(list: List<RavaraBaseItem?>`; shouldClear: Boolean)` The second param specifies whether or not the current list will be deleted before inserting the new one
+- `addList(list: List<RavaraBaseItem?>, shouldClear: Boolean)` The second param specifies whether or not the current list will be deleted before inserting the new one
+- `replaceListIfDistinct(list: List<RavaraBaseItem>): Boolean` This method will compare the new list with the current one and only replace it if they are different. It returns true if the list was replaced
 - `removeItem(fn: (item: RavaraBaseItem) -> Boolean)`
 - `removeItem(itemId: String)`;  This uses the id you supply on your `RavaraBaseItem` objects to match the items in the list 
 - `removeItem(item: RavaraBaseItem)`; Uses `List.indexOf` to match the items
